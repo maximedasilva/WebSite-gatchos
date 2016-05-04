@@ -16,6 +16,9 @@ include("identifiants.php");
         $requete="SELECT  NomMusicien, pseudo,Mdp,idMusicien,isChef FROM Musicien where pseudo='";
         $requete = $requete.$pseudo;
         $requete = $requete."'";
+
+
+        
         $query=$db->prepare($requete);
         $query->execute();
         $data=$query->fetch();
@@ -25,7 +28,7 @@ include("identifiants.php");
             $_SESSION["NOM_USER"] =$data['NomMusicien'];
             $_SESSION["CODE_MUSE"]=$data['idMusicien'];
             $requete2="select count(*) as total from Sortie where DateSortie >=NOW()";
-            $requete3="select count(*) as inscrit from Inscription where Musicien_idMusicien=".$_SESSION["CODE_MUSE"]; 
+            $requete3="select count(*) as inscrit from Inscription where Musicien_idMusicien=".$_SESSION["CODE_MUSE"];
             $query=$db->prepare($requete2);
             $query->execute();
             $t=$query->fetch();
@@ -37,18 +40,18 @@ include("identifiants.php");
             $pasinscrit=$total-$inscrit;
             echo $pasinscrit;
             if(isset($_GET["url"])){
-      header("location: http://".$_GET["url"]); 
+      header("location: http://".$_GET["url"]);
       }
       else
                header('Location:index.php');
 		exit();
 	}
         else{
-           echo "erreur connexion";     
-echo "<a href='index.php'>cliquezici pour revenir</a>";      
+           echo "erreur connexion";
+echo "<a href='index.php'>cliquezici pour revenir</a>";
         }
-        
-     echo $message;  
+
+     echo $message;
 }
 
 ?>
