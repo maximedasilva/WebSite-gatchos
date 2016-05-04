@@ -18,6 +18,8 @@ include("identifiants.php");
         $requete = $requete."'";
 
 
+
+
         
         $query=$db->prepare($requete);
         $query->execute();
