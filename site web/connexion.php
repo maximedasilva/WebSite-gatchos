@@ -16,11 +16,7 @@ include("identifiants.php");
         $requete="SELECT  NomMusicien, pseudo,Mdp,idMusicien,isChef FROM Musicien where pseudo='";
         $requete = $requete.$pseudo;
         $requete = $requete."'";
-
-
-
-
-        
+      
         $query=$db->prepare($requete);
         $query->execute();
         $data=$query->fetch();
